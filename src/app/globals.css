@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* ── Design tokens ────────────────────────────────────────────────
+   Near-black with a cool blue cast, ultraviolet as the brand accent.
+   Violet is dark enough that text sits on it in --color-on-violet
+   rather than the page background. Green/red stay semantic — they
+   only ever mean gain and loss, never decoration.                 */
+@theme {
+  --color-void:       #07060E;
+  --color-surface:    #110D22;
+  --color-raised:     #171338;
+  --color-line:       #221D4A;
+  --color-violet:     #6E5BF0;
+  --color-grape:      #8B7BF5;
+  --color-on-violet:  #F4F3FF;
+  --color-gain:       #3ED9A4;
+  --color-loss:       #FF5C77;
+  --color-ink:        #E7E6F8;
+  --color-muted:      #837DA6;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html { color-scheme: dark; }
+
+body {
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Every figure in the app aligns on the same column grid. */
+.tabular { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Visible keyboard focus everywhere. */
+:focus-visible {
+  outline: 2px solid var(--color-violet);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-grape); }
